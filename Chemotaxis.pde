@@ -1,48 +1,90 @@
-cell[]bob = new cell[100];
-void setup(){
-size(800,800);
-background(0);
-for ( int i = 0; i < bob.length; i++)
-{
-       bob[i] = new cell();
-}
+cell[]objects = new cell[24];
+void setup() {
+  size(800, 800);
+  background(0);
+  for ( int i = 0; i < objects.length; i++)
+  {
+    objects[i] = new cell();
+  }
+
 }
 
-void draw(){
+void draw() {
+  background(0);
   noStroke();
-for ( int i = 0; i < bob.length; i++)
-{
-       bob[i].move();
-       bob[i].show();
-}
-}
-
-void mousePressed(){
-if(mousePressed){
-background(0);
-}
-}
-class cell{
-int x,y,r,g,b;
-cell(){
-x = (int)(Math.random()*800);
-y = (int)(Math.random()*800);
-r = (int)(Math.random()*256);
-g = (int)(Math.random()*256);
-b = (int)(Math.random()*256);
-}
-void move(){
-if (mousePressed){
-x = x + (int)(Math.random()*7)-3;
-y = y + (int)(Math.random()*7)-3;
-}
-x = x + (int)(Math.random()*7)-3;
-y = y + (int)(Math.random()*7)-3;
-}
-void show(){
-fill(r,g,b);
-ellipse(x,y,5,5);
-}
+  for ( int i = 0; i < objects.length; i++)
+  {
+    objects[i].move();
+    objects[i].show();
+  }
+  
+   for (int i = 0; i < objects.length; i++) {
+    for (int j = 0; j < objects.length; j++) {
+    if (dist(objects[i].x,objects[i].y,objects[j].x,objects[j].y)<20)
+    {
+      if (objects[i].rps==1 && objects[j].rps==2){
+        objects[i].x=10000;
+        objects[i].y=10000;
+      }
+      else if (objects[i].rps==1 && objects[j].rps==3){
+        objects[j].x=10000;
+        objects[j].y=10000;
+      }
+       else if (objects[i].rps==2 && objects[j].rps==3){
+        objects[i].x=10000;
+        objects[i].y=10000;
+      }
+      }
+    }
+  }
 
 }
 
+void mousePressed() {
+  if (mousePressed) {
+      for (int i = 0; i < objects.length; i++) {
+    objects[i] = new cell();
+  }
+    background(0);
+
+  }
+}
+class cell {
+  int x, y, rps;
+  cell() {
+    x = (int)(Math.random()*600+100);
+    y = (int)(Math.random()*600+100);
+    rps = (int)(Math.random()*3+1);
+  }
+  void move() {
+    if (mousePressed) {
+      x = x + (int)(Math.random()*7)-3;
+      y = y + (int)(Math.random()*7)-3;
+    }
+    x = x + (int)(Math.random()*7)-3;
+    y = y + (int)(Math.random()*7)-3;
+  }
+  void show() {
+      if (rps == 1){
+      fill(210, 180, 140);
+      ellipse(x, y, 50, 50);
+      fill(0, 0, 0);
+      text("Rock", x-15, y);
+    }
+    else if (rps == 2){
+      fill(256, 256, 256);
+      ellipse(x, y, 50, 50);
+      fill(0, 0, 0);
+      text("Paper", x-15, y);
+    }
+    else if (rps==3){
+     fill(70, 71, 62);
+      ellipse(x, y, 50, 50);
+      fill(0, 0, 0);
+      text("Scissor", x-20, y);
+    }
+    }
+   
+
+  
+}
