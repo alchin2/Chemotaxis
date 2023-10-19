@@ -24,12 +24,18 @@ void draw() {
     {
       if (objects[i].rps==1 && objects[j].rps==2){
         objects[i].alive = false;
+				objects[i].x=10000;
+				objects[i].y=10000;
       }
       else if (objects[i].rps==1 && objects[j].rps==3){
         objects[j].alive = false;
+				objects[j].x=10000;
+				objects[j].y=10000;
       }
        else if (objects[i].rps==2 && objects[j].rps==3){
          objects[i].alive = false;
+					objects[i].x=10000;
+				objects[i].y=10000;
       }
       }
     }
