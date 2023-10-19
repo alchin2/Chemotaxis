@@ -67,12 +67,17 @@ class cell {
     {
      x = x + (int)(Math.random()*7)-7;
     }
+     else if (x=10000){
+      x = x
+			}
     else{
        x = x + (int)(Math.random()*7)-3;
     }
     if (y>800){
       y=y+(int)(Math.random()*7)-7;
-    }
+    }else if (y=10000){
+      y=y
+			}
     else
     {
        y = y + (int)(Math.random()*7)-3;
@@ -84,12 +89,19 @@ class cell {
     {
      x = x + (int)(Math.random()*7)-7;
     }
+     else if (x=10000){
+      x = x
+			}
     else{
        x = x + (int)(Math.random()*7)-3;
     }
     if (y>800){
       y=y+(int)(Math.random()*7)-7;
     }
+      else if (y=10000){
+      y=y
+			}
+    else{
     else
     {
        y = y + (int)(Math.random()*7)-3;
